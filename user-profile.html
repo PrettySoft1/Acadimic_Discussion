@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-white shadow-sm w-100 position-relative">
+        <div class="container">
+            <a href="/" class="logo text-deep-navy text-center" style="width: 100px;">
+                <img src="imgs/logo.svg" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto align-items-center justify-content-between">
+                    <li class="nav-item active mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-sunshine"
+                            href="/">
+                            <i class="bi bi-house-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown position-relative mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            id="depts-dropdown" role="button" data-toggle="dropdown" aria-haspopup="false"
+                            aria-expanded="false" href='depts.html'>
+                            <i class="bi bi-collection-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الأقسام</span>
+                        </a>
+                        <div class="depts-dropdown dropdown-menu w-fit-content shadow flex-wrap justify-content-center px-2"
+                            aria-labelledby="depts-dropdown">
+                            <a class="dropdown-item " href="/users/{{ auth()->id() }}">
+                                <i class="bi bi-person-fill"></i>
+                                معلومات الحساب
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/favorites">
+                                <i class="bi bi-heart-fill"></i>
+                                المفضلة
+                            </a>
+                            <a class="dropdown-item w-auto" href="#">
+                                <i class="bi bi-cart-fill"></i>
+                                المشتريات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/{{ auth()->id() }}/reviews">
+                                <i class="bi bi-pencil-square"></i>
+                                المراجعات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/logout">
+                                <i class="bi bi-box-arrow-left"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </li>
+                    <!-- <div class="custom-ddm dropdown-menu mx-4 shadow flex-wrap justify-content-center px-4"
+                        aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item w-auto" href="/categories/{{ $category->id }}">asd</a>
+                    </div> -->
+                    <li class="nav-item mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="
+                            index.html">
+                            <i class="bi bi-book-fill fs-4 position-relative"></i>
+                            <span class="position-relative">المكتبة</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="
+                            add-post.html">
+                            <i class="bi bi-pencil-square fs-4 position-relative"></i>
+                            <span class="position-relative">إضافة منشور</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="login.html">
+                            <i class="bi bi-box-arrow-in-left fs-4 position-relative"></i>
+                            <span class="position-relative">تسجيل الدخول</span>
+                        </a>
+                    </li>
+
+                    <!-- <li class="nav-item dropdown position-relative">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            id="account-dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="bi bi-person-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الحساب</span>
+                        </a>
+                        <div class="account-dropdown dropdown-menu w-fit-content shadow flex-wrap justify-content-center px-2"
+                            aria-labelledby="">
+                            <a class="dropdown-item " href="/users/{{ auth()->id() }}">
+                                <i class="bi bi-person-fill"></i>
+                                معلومات الحساب
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/favorites">
+                                <i class="bi bi-heart-fill"></i>
+                                المفضلة
+                            </a>
+                            <a class="dropdown-item w-auto" href="#">
+                                <i class="bi bi-cart-fill"></i>
+                                المشتريات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/{{ auth()->id() }}/reviews">
+                                <i class="bi bi-pencil-square"></i>
+                                المراجعات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/logout">
+                                <i class="bi bi-box-arrow-left"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <div>
+                        <!-- Photo & Name -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- Description About Profile -->
+                        <p class="lh-2 text-secondary pe-0 pe-md-5">
+                            كيف الذي شخص ملموس سأشرح ولا أ الرافض إنها مهندس حاضر الأكثر سأشرح ما سأشرح تكون بالفعل يفعل
+                            وسوف
+                            مدمر تكون احصل أسبرناتور يمين قيمة نكون مدمر يكون مهندس آخر الضرورات في ملموس دعه شهوة رحلة
+                            يمارس
+                            يمين هي سأشرح حقا انا شهوة عليه ديون يأخذ نتهم فليكن وسعنا كما
+                            ينتقد الجميع أن حياة تكون نتيجة صده أن أنا ملموس بحكمة ممتع تحدث أسبرناتور عقل وُلِدّ يفترض
+                            رفض
+                            آخر
+                            للرفض شئ أو هو لوم شخص ملموس عمل فقط الكبرى آتي مبروك الجاد يقدموا آتي يعيق مرات منهم
+                            الحمدون
+                            جوية
+                            قيمة غالباً حلها يحب يتحقق مهجور الحقيقة في الرافض الذي لإختيار
+                        </p>
+                        <!-- Filtering The Content Of Profile -->
+                        <div
+                            class="depts d-flex justify-content-between align-items-center gap-3 overflow-x-auto my-5 px-3 py-3">
+                            <p
+                                class="rounded text-sunshine bg-deep-navy cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                                كل المواضيع</p>
+                            <p
+                                class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                                المنشورات</p>
+                            <p
+                                class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                                التعليقات</p>
+                            <p
+                                class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                                المفضلة
+                            </p>
+                        </div>
+                        <!-- Arbitrary Posts From Profile -->
+                        <div class="post mb-5 px-4 position-relative shadow rounded-4 py-3 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                                class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                                <path id="bookmark"
+                                    d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                    transform="translate(0.753 0.17)" fill="#002147" />
+                            </svg>
+                            <!-- الصورة والمعلومات -->
+                            <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                                <div class="writer-photo">
+                                    <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                        alt="user-photo">
+                                </div>
+                                <div class="col-10">
+                                    <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                            href="user-profile.html">فهد علي الأغبري</a></p>
+                                    <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                    <hr class="w-50">
+                                </div>
+                            </div>
+                            <!-- عنوان ونص المنشور -->
+                            <div class="row my-3 px-2 px-md-3">
+                                <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a
+                                        href="post.html">عنوان
+                                        المنشور</a></p>
+                                <p class="post-content text-secondary lh-2">
+                                    الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء
+                                    ذلك
+                                    منهم
+                                    إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده
+                                    وذلك
+                                    هذا
+                                    لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                    وذلك ما
+                                    وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا
+                                    سرور.
+                                    وظائف
+                                    أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما
+                                    متطابقة.مهجور
+                                    فقط
+                                    فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد
+                                    أين
+                                    نكون.
+                                </p>
+                            </div>
+                            <!-- الأيقونات أسفل يسار المنشور -->
+                            <div class="d-flex justify-content-end align-items-center fs-5">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                    <span class="voteCount">0</span>
+                                    <i class="bi bi-caret-down-fill cursor-pointer mx-3"
+                                        onclick="decreaseVote(this)"></i>
+                                </div>
+                                <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                                <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                        </div>
+                        <div class="post mb-5 px-4 position-relative shadow rounded-4 py-3 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                                class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                                <path id="bookmark"
+                                    d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                    transform="translate(0.753 0.17)" fill="#002147" />
+                            </svg>
+                            <!-- الصورة والمعلومات -->
+                            <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                                <div class="writer-photo">
+                                    <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                        alt="user-photo">
+                                </div>
+                                <div class="col-10">
+                                    <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                            href="user-profile.html">فهد علي الأغبري</a></p>
+                                    <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                    <hr class="w-50">
+                                </div>
+                            </div>
+                            <!-- عنوان ونص المنشور -->
+                            <div class="row my-3 px-2 px-md-3">
+                                <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a
+                                        href="post.html">عنوان
+                                        المنشور</a></p>
+                                <p class="post-content text-secondary lh-2">
+                                    الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء
+                                    ذلك
+                                    منهم
+                                    إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده
+                                    وذلك
+                                    هذا
+                                    لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                    وذلك ما
+                                    وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا
+                                    سرور.
+                                </p>
+                            </div>
+                            <!-- الأيقونات أسفل يسار المنشور -->
+                            <div class="d-flex justify-content-end align-items-center fs-5">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                    <span class="voteCount">0</span>
+                                    <i class="bi bi-caret-down-fill cursor-pointer mx-3"
+                                        onclick="decreaseVote(this)"></i>
+                                </div>
+                                <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                                <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                        </div>
+                        <!-- Arbitrary Comments From Profile -->
+                        <div class="shadow rounded-4 bg-white">
+                            <div class="py-3 px-4">
+                                <!-- الصورة والمعلومات -->
+                                <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                                    <div class="comment-photo">
+                                        <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                            alt="user-photo">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="card-title fs-6 fw-semibold text-teal mb-0 p-0">فهد علي الأغبري</p>
+                                        <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                        <hr style="width: 200px;">
+                                    </div>
+                                </div>
+                                <!-- عنوان ونص المنشور -->
+                                <div class="row me-3 px-4">
+                                    <p class="post-title text-deep-navy"><a href="">رد على@فهد الأغبري</a></p>
+                                    <p class="post-content text-secondary lh-2">
+                                        هذا هو نص المنشور. يمكن أن يحتوي على محتوى متعدد الأسطر لشرح أو تقديم موضوع
+                                        معين.هذا
+                                        هو
+                                        نص المنشور. يمكن أن يحتوي على محتوى متعدد
+                                    </p>
+                                </div>
+                                <!-- الأيقونات أسفل يسار المنشور -->
+                                <div class="d-flex justify-content-end align-items-center fs-5">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-caret-up-fill cursor-pointer mx-3"
+                                            onclick="increaseVote(this)"></i>
+                                        <span class="voteCount">0</span>
+                                        <i class="bi bi-caret-down-fill cursor-pointer mx-3"
+                                            onclick="decreaseVote(this)"></i>
+                                    </div>
+                                    <i class="bi bi-chat-square-text cursor-pointer mx-3"
+                                        onclick="decreaseVote(this)"></i>
+                                    <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                                </div>
+
+                                <hr class="me-5 px-4" width="85%">
+
+                            </div>
+                            <div class="py-3 px-4">
+                                <!-- الصورة والمعلومات -->
+                                <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                                    <div class="comment-photo">
+                                        <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                            alt="user-photo">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="card-title fs-6 fw-semibold text-teal mb-0 p-0">فهد علي الأغبري</p>
+                                        <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                        <hr style="width: 200px;">
+                                    </div>
+                                </div>
+                                <!-- عنوان ونص المنشور -->
+                                <div class="row me-3 px-4">
+                                    <p class="post-title text-deep-navy"><a href="">رد على@فهد الأغبري</a></p>
+                                    <p class="post-content text-secondary lh-2">
+                                        هذا هو نص المنشور. يمكن أن يحتوي على محتوى متعدد الأسطر لشرح أو تقديم موضوع
+                                        معين.هذا
+                                        هو
+                                        نص المنشور. يمكن أن يحتوي على محتوى متعدد
+                                    </p>
+                                </div>
+                                <!-- الأيقونات أسفل يسار المنشور -->
+                                <div class="d-flex justify-content-end align-items-center fs-5">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-caret-up-fill cursor-pointer mx-3"
+                                            onclick="increaseVote(this)"></i>
+                                        <span class="voteCount">0</span>
+                                        <i class="bi bi-caret-down-fill cursor-pointer mx-3"
+                                            onclick="decreaseVote(this)"></i>
+                                    </div>
+                                    <i class="bi bi-chat-square-text cursor-pointer mx-3"
+                                        onclick="decreaseVote(this)"></i>
+                                    <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                                </div>
+
+                                <hr class="me-5 px-4" width="85%">
+
+                            </div>
+                            <div class="py-3 px-4">
+                                <!-- الصورة والمعلومات -->
+                                <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                                    <div class="comment-photo">
+                                        <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                            alt="user-photo">
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="card-title fs-6 fw-semibold text-teal mb-0 p-0">فهد علي الأغبري</p>
+                                        <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                        <hr style="width: 200px;">
+                                    </div>
+                                </div>
+                                <!-- عنوان ونص المنشور -->
+                                <div class="row me-3 px-4">
+                                    <p class="post-title text-deep-navy"><a href="">رد على@فهد الأغبري</a></p>
+                                    <p class="post-content text-secondary lh-2">
+                                        هذا هو نص المنشور. يمكن أن يحتوي على محتوى متعدد الأسطر لشرح أو تقديم موضوع
+                                        معين.هذا
+                                        هو
+                                        نص المنشور. يمكن أن يحتوي على محتوى متعدد
+                                    </p>
+                                </div>
+                                <!-- الأيقونات أسفل يسار المنشور -->
+                                <div class="d-flex justify-content-end align-items-center fs-5">
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-caret-up-fill cursor-pointer mx-3"
+                                            onclick="increaseVote(this)"></i>
+                                        <span class="voteCount">0</span>
+                                        <i class="bi bi-caret-down-fill cursor-pointer mx-3"
+                                            onclick="decreaseVote(this)"></i>
+                                    </div>
+                                    <i class="bi bi-chat-square-text cursor-pointer mx-3"
+                                        onclick="decreaseVote(this)"></i>
+                                    <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                                </div>
+
+                                <hr class="me-5 px-4" width="85%">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 d-md-flex flex-column gap-4 px-2 py-4 d-none">
+                    <!-- اكتب أكوادك هنا حسب الحاجة -->
+                    <div class="shadow rounded-4 py-3 px-3">
+                        <div class="my-3">
+                            <p class="text-teal">معلومات حول <a href="#" class="text-decoration-underline">فهد
+                                    الأغبري</a>
+                            </p>
+                            <div class="d-flex justify-content-md-between justify-content-start px-2 px-md-4">
+                                <div class="text-center">
+                                    <p class="text-teal fw-bold mb-0">
+                                        500+
+                                    </p>
+                                    <p class="text-deep-navy fw-semibold mb-0">
+                                        المتابعين
+                                    </p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-teal fw-bold mb-0">
+                                        البرمجة
+                                    </p>
+                                    <p class="text-deep-navy fw-semibold mb-0">
+                                        أهم المجالات
+                                    </p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-teal fw-bold mb-0">
+                                        تعز
+                                    </p>
+                                    <p class="text-deep-navy fw-semibold mb-0">
+                                        محل الإقامة
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-5 mb-3">
+                            <p class="text-teal">خبراته العلمية</p>
+                            <ul class="list-unstyled text-secondary">
+                                <li class="my-3">
+                                    <i class="bi bi-caret-left-fill ms-1"></i>
+                                    أستاذ دكتور في جامعة إب
+                                </li>
+                                <li class="my-3">
+                                    <i class="bi bi-caret-left-fill ms-1"></i>
+                                    مصمم نظام شركة النفط اليمنية
+                                </li>
+                                <li class="my-3">
+                                    <i class="bi bi-caret-left-fill ms-1"></i>
+                                    صاحب شركة الفرغ العالمية في اليمن
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-5 mb-3">
+                            <p class="text-teal">اهتماماته اليومية</p>
+                            <ul class="list-unstyled text-secondary">
+                                <li class="my-3">
+                                    <i class="bi bi-caret-left-fill ms-1"></i>
+                                    أستاذ دكتور في جامعة إب
+                                </li>
+                                <li class="my-3">
+                                    <i class="bi bi-caret-left-fill ms-1"></i>
+                                    مصمم نظام شركة النفط اليمنية
+                                </li>
+                                <li class="my-3">
+                                    <i class="bi bi-caret-left-fill ms-1"></i>
+                                    صاحب شركة الفرغ العالمية في اليمن
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p class="text-center mt-2 mb-0 fw-normal text-grey">
+                &copy;كل الحقوق محفوظة لصالح المنصة
+            </p>
+        </div>
+    </footer>
+</body>
+<script src='js/script.js'></script>
+
+</html>

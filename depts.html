@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-white shadow-sm w-100 position-relative">
+        <div class="container">
+            <a href="/" class="logo text-deep-navy text-center" style="width: 100px;">
+                <img src="imgs/logo.svg" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto align-items-center">
+                    <li class="nav-item active">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-sunshine"
+                            href="/">
+                            <i class="bi bi-house-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown position-relative">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            id="depts-dropdown" role="button" data-toggle="dropdown" aria-haspopup="false"
+                            aria-expanded="false" href='depts.html'>
+                            <i class="bi bi-collection-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الأقسام</span>
+                        </a>
+                        <div class="depts-dropdown dropdown-menu w-fit-content shadow flex-wrap justify-content-center px-2"
+                            aria-labelledby="depts-dropdown">
+                            <a class="dropdown-item " href="/users/{{ auth()->id() }}">
+                                <i class="bi bi-person-fill"></i>
+                                معلومات الحساب
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/favorites">
+                                <i class="bi bi-heart-fill"></i>
+                                المفضلة
+                            </a>
+                            <a class="dropdown-item w-auto" href="#">
+                                <i class="bi bi-cart-fill"></i>
+                                المشتريات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/{{ auth()->id() }}/reviews">
+                                <i class="bi bi-pencil-square"></i>
+                                المراجعات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/logout">
+                                <i class="bi bi-box-arrow-left"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </li>
+                    <!-- <div class="custom-ddm dropdown-menu mx-4 shadow flex-wrap justify-content-center px-4"
+                        aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item w-auto" href="/categories/{{ $category->id }}">asd</a>
+                    </div> -->
+                    <li class="nav-item">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="
+                            index.html">
+                            <i class="bi bi-book-fill fs-4 position-relative"></i>
+                            <span class="position-relative">المكتبة</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="add-post.html">
+                            <i class="bi bi-pencil-square fs-4 position-relative"></i>
+                            <span class="position-relative">إضافة منشور</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="login.html">
+                            <i class="bi bi-box-arrow-in-left fs-4 position-relative"></i>
+                            <span class="position-relative">تسجيل الدخول</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item dropdown position-relative">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            id="account-dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="bi bi-person-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الحساب</span>
+                        </a>
+                        <div class="account-dropdown dropdown-menu w-fit-content shadow flex-wrap justify-content-center px-2"
+                            aria-labelledby="">
+                            <a class="dropdown-item " href="/users/{{ auth()->id() }}">
+                                <i class="bi bi-person-fill"></i>
+                                معلومات الحساب
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/favorites">
+                                <i class="bi bi-heart-fill"></i>
+                                المفضلة
+                            </a>
+                            <a class="dropdown-item w-auto" href="#">
+                                <i class="bi bi-cart-fill"></i>
+                                المشتريات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/{{ auth()->id() }}/reviews">
+                                <i class="bi bi-pencil-square"></i>
+                                المراجعات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/logout">
+                                <i class="bi bi-box-arrow-left"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container py-5">
+            <div class="breadcrumb bg-secondary-subtle px-2 py-3 mb-4">
+                <a href="index.html" class="breadcrumb-item text-teal">الرئيسية</a>
+                <a href="depts.html" class="breadcrumb-item text-teal">الأقسام</a>
+                <p class="breadcrumb-item mb-0 text-deep-navy">الطب</p>
+            </div>
+            <div class="row">
+                <div class="small col-4">
+                    <p class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+                        التصفية
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                    <div class="d-none">
+                        <p class="fw-bold text-deep-navy">
+                            <i class="bi bi-fire"></i>
+                            الرائجة
+                        </p>
+                        <p class="fw-bold text-deep-navy">
+                            <i class="bi bi-clock-fill"></i>
+                            المضافة حديثاً
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+                        التصنيفات
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                    <div class="d-none">
+                        <p class="fw-bold text-deep-navy">
+                            <i class="bi bi-fire"></i>
+                            الرائجة
+                        </p>
+                        <p class="fw-bold text-deep-navy">
+                            <i class="bi bi-clock-fill"></i>
+                            المضافة حديثاً
+                        </p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <p class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+                        الأقسام
+                        <i class="bi bi-caret-down-fill"></i>
+                    </p>
+                    <div class="d-none">
+                        <p class="fw-bold text-deep-navy">
+                            <i class="bi bi-fire"></i>
+                            الرائجة
+                        </p>
+                        <p class="fw-bold text-deep-navy">
+                            <i class="bi bi-clock-fill"></i>
+                            المضافة حديثاً
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row col-12">
+                <div class="px-2 col-12 col-md-9 py-4 gap-4 d-flex flex-column">
+                    <!-- اكتب أكوادك هنا حسب الحاجة -->
+                    <div class="depts d-flex align-items-center gap-3 overflow-x-scroll px-3 py-3">
+                        <p class="rounded text-sunshine bg-deep-navy cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            الطب</p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            التاريخ</p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            تقنيةالمعلومات</p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            الفيزياء
+                        </p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            الفلسفة
+                        </p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            الرياضيات
+                        </p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            الكيمياء
+                        </p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            التاريخ
+                        </p>
+                        <p
+                            class="rounded shadow text-deep-navy bg-white cursor-pointer fw-bold px-4 py-1 text-nowrap mb-0">
+                            التاريخ
+                        </p>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                                وظائف
+                                أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما متطابقة.مهجور
+                                فقط
+                                فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد أين
+                                نكون.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                                وظائف
+                                أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما متطابقة.مهجور
+                                فقط
+                                فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد أين
+                                نكون.قلق مهجور أين لإختيار يكره. شيء الحمدون مظلمة يقدموا انهم الجسم لذلك. الذي في انا
+                                إضافي
+                                وسعنا ليتم.العمل رحلة مدمر. لأن التي الخدع مهندس معماري عقل ملكنا يحب مبروك. التي آخر
+                                الخدع
+                                احصل.تم تحدث واحد هم يأخذ المرونة أقسى ماذا مهجور. شهوة -, نتيجة. يعيق المتهمون و يترتب
+                                يمارس حر حزن.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                                وظائف
+                                أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما متطابقة.مهجور
+                                فقط
+                                فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد أين
+                                نكون.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                                وظائف
+                                أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما متطابقة.مهجور
+                                فقط
+                                فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد أين
+                                نكون.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                                وظائف
+                                أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما متطابقة.مهجور
+                                فقط
+                                فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد أين
+                                نكون.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+                    <div class="post mb-3 px-4 py-3 position-relative shadow rounded-4 py-3 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="140" viewBox="0 0 30 140"
+                            class="bookmark position-absolute top-0 cursor-pointer opacity-25">
+                            <path id="bookmark"
+                                d="M.033.562-.753,136.947c0,1.59.838,2.883,1.868,2.883a1.464,1.464,0,0,0,1.076-.522l11.816-12.766,11.816,12.766a1.464,1.464,0,0,0,1.076.522c1.03,0,1.868-1.293,1.868-2.883L29.247.083c0-.568-1.744,0-3.445,0H3.662A13.931,13.931,0,0,0,.033.562Z"
+                                transform="translate(0.753 0.17)" fill="#002147" />
+                        </svg>
+                        <!-- الصورة والمعلومات -->
+                        <div class="d-flex align-items-center flex-column flex-md-row gap-3">
+                            <div class="writer-photo">
+                                <img src="imgs/user.jpg" class="rounded-circle w-100 h-100 object-fit-cover"
+                                    alt="user-photo">
+                            </div>
+                            <div class="col-10">
+                                <p class="card-title fs-5 fw-semibold text-teal mb-0 p-0"><a
+                                        href="user-profile.html">فهد علي الأغبري</a></p>
+                                <p class="card-text p-0"><small class="text-grey">دكتور جامعي</small></p>
+                                <hr class="w-50">
+                            </div>
+                        </div>
+                        <!-- عنوان ونص المنشور -->
+                        <div class="row my-3 px-2 px-md-3">
+                            <p class="post-title fs-4 fw-medium me-0 me-md-5 text-deep-navy "><a href="post.html">عنوان
+                                    المنشور</a></p>
+                            <p class="post-content text-secondary lh-2">
+                                الكبرى يفترض فقط هو أشياء له الكل. انهم سمحت يأخذ -, الذي يفعل. ليتم كبير ل هؤلاء ذلك
+                                منهم
+                                إلا معظم لأن جَذّاب.حر تم عليه وسعنا سبب وُلِدّ وذلك مبروك ل ولا. يمين غالباً صده وذلك
+                                هذا
+                                لأن. جَذّاب سأشرح بحكمة شهوة حقا ليتم نحن.غالباً و في بحكمة عقل. أنا مزايا نفسها قال
+                                وذلك ما
+                                وظائف أنا. يسقط لا اللطف مهجور إضافي يبحث فليكن معماري.أشياء أنا انا نحن و ل إلا سرور.
+                                وظائف
+                                أحد للرفض له يقدموا لأن لا المعجل يقام. و أي حلها ألم -, وظائف آتي هم ما متطابقة.مهجور
+                                فقط
+                                فاسد هي الرافض من. امتياز أشياء مكاتب لا لأن للمتابعة. جوية عن المعجل عقل أين الموعد أين
+                                نكون.
+                            </p>
+                        </div>
+                        <!-- الأيقونات أسفل يسار المنشور -->
+                        <div class="d-flex justify-content-end align-items-center fs-5">
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-caret-up-fill cursor-pointer mx-3" onclick="increaseVote(this)"></i>
+                                <span class="voteCount">0</span>
+                                <i class="bi bi-caret-down-fill cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            </div>
+                            <i class="bi bi-chat-square-text cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                            <i class="bi bi-share cursor-pointer mx-3" onclick="decreaseVote(this)"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="d-md-flex col-3 flex-column gap-4 px-2 py-4 d-none ">
+                    <!-- اكتب أكوادك هنا حسب الحاجة -->
+                    <div class="shadow rounded-4 py-3 px-3">
+                        <p class="text-teal">مكتبة القسم</p>
+                        <p class="my-2 text-grey">الكتب المتوفرة في هذا القسم</p>
+                        <ul class="list-unstyled text-secondary">
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-book-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="d-block text-center mx-auto my-2 text-decoration-underline text-sunshine small">عرض
+                            المزيد</a>
+                        <p class="my-2 mt-5 text-grey">الفيديوهات المتوفرة في هذا القسم</p>
+                        <ul class="list-unstyled text-secondary">
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                            <li class="my-3 overflow-hidden text-decoration-underline text-nowrap">
+                                <i class="bi bi-camera-video-fill ms-1 "></i>
+                                <a href="#">كتاب العلم نور
+                                    والجهل ظلام</a>
+                            </li>
+                        </ul>
+                        <a href="#"
+                            class="d-block text-center mx-auto my-2 text-decoration-underline text-sunshine small">عرض
+                            المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p class="text-center mt-2 mb-0 fw-normal text-grey">
+                &copy;كل الحقوق محفوظة لصالح المنصة
+            </p>
+        </div>
+    </footer>
+</body>
+<script src='js/script.js'></script>
+
+</html>

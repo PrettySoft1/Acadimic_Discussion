@@ -1,0 +1,126 @@
+:root {
+    --white: #FFFFFF;
+    --grey: #BCBCBC;
+    --drop-shadow: #ECECEC;
+    --deep-navy: #002147;
+    --teal: #008080;
+    --light-teal: #00B2B2;
+    --sunshine: #FFC107;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+}
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+*::-webkit-scrollbar-track {
+    background-color: var(--grey);
+}
+*::-webkit-scrollbar-thumb {
+    background-color: teal;
+}
+
+::selection {
+    background-color: var(--light-teal);
+    color: var(--white);
+}
+.text-decoration-underline {
+    text-underline-offset: 5px !important;
+    text-decoration: underline !important;
+}
+a {
+    text-decoration: none;
+    color:inherit;
+    text-underline-offset: 10px;
+}
+.cursor-pointer {
+    cursor: pointer !important;
+}
+.w-fit-content {
+    width: -moz-fit-content !important;
+    width: -webkit-fit-content !important;
+    width: fit-content !important;
+}
+.lh-2 {
+    line-height: 2;
+}
+.text-grey {
+    color: var(--grey) !important;
+}
+.text-deep-navy {
+    color: var(--deep-navy) !important;
+}
+.text-teal {
+    color: var(--teal) !important;
+}
+.text-light-teal {
+    color: var(--light-teal) !important;
+}
+.text-sunshine {
+    color: var(--sunshine) !important;
+}
+.bg-grey {
+    background-color: var(--grey) !important;
+}
+.bg-deep-navy {
+    background-color: var(--deep-navy) !important;
+}
+.bg-teal {
+    background-color: var(--teal) !important;
+}
+.bg-light-teal {
+    background-color: var(--light-teal) !important;
+}
+.bg-sunshine {
+    background-color: var(--sunshine) !important;
+}
+.bg-white {
+    background-color: var(--white) !important;
+}
+.logo h1 {
+    font-size: calc(2rem + 1.5vw) !important;
+}
+.logo p.small {
+    font-size: .5rem;
+    letter-spacing: 2px;
+}
+.nav-link {
+    width: fit-content;
+}
+.nav-link > *{
+    transition: .3s;
+}
+.nav-link i {
+    transform: translateY(30%);
+}
+.nav-link span {
+    transform: translateY(120%);
+}
+.nav-link:hover i {
+    transform: translateY(0px);
+}
+.nav-link:hover span {
+    transform: translateY(-10px);
+}
+.container .sidebar {
+    width: 20%;
+}
+.container .leftbar {
+    width: 40%;
+}
+.container .content {
+    width: 100%;
+}
+.text-justify {
+    text-align: justify !important;
+}
+.text-justify-center {
+    text-align: justify !important;
+    text-align-last: center !important;
+}

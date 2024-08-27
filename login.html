@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/bootstrap.bundle.min.js" defer></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-white shadow-sm w-100 position-relative">
+        <div class="container">
+            <a href="/" class="logo text-deep-navy text-center" style="width: 100px;">
+                <img src="imgs/logo.svg" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto align-items-center">
+                    <li class="nav-item active">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-sunshine"
+                            href="/">
+                            <i class="bi bi-house-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الرئيسية</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown position-relative">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            id="depts-dropdown" role="button" data-toggle="dropdown" aria-haspopup="false"
+                            aria-expanded="false" href='depts.html'>
+                            <i class="bi bi-collection-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الأقسام</span>
+                        </a>
+                        <div class="depts-dropdown dropdown-menu w-fit-content shadow flex-wrap justify-content-center px-2"
+                            aria-labelledby="depts-dropdown">
+                            <a class="dropdown-item " href="/users/{{ auth()->id() }}">
+                                <i class="bi bi-person-fill"></i>
+                                معلومات الحساب
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/favorites">
+                                <i class="bi bi-heart-fill"></i>
+                                المفضلة
+                            </a>
+                            <a class="dropdown-item w-auto" href="#">
+                                <i class="bi bi-cart-fill"></i>
+                                المشتريات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/{{ auth()->id() }}/reviews">
+                                <i class="bi bi-pencil-square"></i>
+                                المراجعات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/logout">
+                                <i class="bi bi-box-arrow-left"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </li>
+                    <!-- <div class="custom-ddm dropdown-menu mx-4 shadow flex-wrap justify-content-center px-4"
+                        aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item w-auto" href="/categories/{{ $category->id }}">asd</a>
+                    </div> -->
+                    <li class="nav-item">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="
+                            index.html">
+                            <i class="bi bi-book-fill fs-4 position-relative"></i>
+                            <span class="position-relative">المكتبة</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="add-post.html">
+                            <i class="bi bi-pencil-square fs-4 position-relative"></i>
+                            <span class="position-relative">إضافة منشور</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            href="login.html">
+                            <i class="bi bi-box-arrow-in-left fs-4 position-relative"></i>
+                            <span class="position-relative">تسجيل الدخول</span>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item dropdown position-relative">
+                        <a class="nav-link overflow-hidden position-relative d-flex flex-column align-items-center text-deep-navy"
+                            id="account-dropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="bi bi-person-fill fs-4 position-relative"></i>
+                            <span class="position-relative">الحساب</span>
+                        </a>
+                        <div class="account-dropdown dropdown-menu w-fit-content shadow flex-wrap justify-content-center px-2"
+                            aria-labelledby="">
+                            <a class="dropdown-item " href="/users/{{ auth()->id() }}">
+                                <i class="bi bi-person-fill"></i>
+                                معلومات الحساب
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/favorites">
+                                <i class="bi bi-heart-fill"></i>
+                                المفضلة
+                            </a>
+                            <a class="dropdown-item w-auto" href="#">
+                                <i class="bi bi-cart-fill"></i>
+                                المشتريات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/{{ auth()->id() }}/reviews">
+                                <i class="bi bi-pencil-square"></i>
+                                المراجعات
+                            </a>
+                            <a class="dropdown-item w-auto" href="/users/logout">
+                                <i class="bi bi-box-arrow-left"></i>
+                                تسجيل الخروج
+                            </a>
+                        </div>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container py-5">
+            <!-- تسجيل الدخول -->
+            <div class="col-10 row mx-auto shadow-lg rounded-4 overflow-hidden flex-md-row flex-column-reverse">
+                <div class="col-12 col-md-6 bg-deep-navy py-5 d-flex align-items-center justify-content-center">
+                    <img src="imgs/white-logo.svg" alt="" class="w-75">
+                </div>
+                <div class="col-12 col-md-6 py-md-0 pb-3 d-flex flex-column">
+                    <p class="fw-medium fs-5 text-center py-3 text-deep-navy text-decoration-underline">تسجيل
+                        الدخول</p>
+                    <form class="d-flex flex-column gap-4 my-auto ">
+                        <div class="form-floating">
+                            <input type="text" id="email" class="form-control" placeholder="البريد الإلكتروني">
+                            <label for="email">البريد الإلكتروني</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" id="password" class="form-control" placeholder="كلمة المرور">
+                            <label for="password">كلمة المرور</label>
+                        </div>
+                        <button
+                            class="bg-deep-navy fw-bold text-white px-5 py-2 border-0 rounded w-fit-content mx-auto">دخول</button>
+                    </form>
+                </div>
+            </div>
+            <!-- إنشاء حساب -->
+            <div class="col-10 row mx-auto shadow-lg rounded-4 overflow-hidden flex-md-row flex-column-reverse my-5">
+                <div class="col-12 col-md-6 bg-deep-navy py-5 d-flex align-items-center justify-content-center">
+                    <img src="imgs/white-logo.svg" alt="" class="w-75">
+                </div>
+                <div class="col-12 col-md-6 py-md-0 pb-3 mb-5 d-flex flex-column">
+                    <p class="fw-medium fs-5 text-center py-3 text-deep-navy text-decoration-underline">إنشاء حساب</p>
+                    <form class="d-flex flex-column gap-4 my-auto ">
+                        <div class="form-floating">
+                            <input type="text" id="user" class="form-control" placeholder="اسم الحساب">
+                            <label for="user">اسم الحساب</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" id="email" class="form-control" placeholder="البريد الإلكتروني">
+                            <label for="email">البريد الإلكتروني</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" id="password" class="form-control" placeholder="كلمة المرور">
+                            <label for="password">كلمة المرور</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" id="password-confirmation" class="form-control"
+                                placeholder="تأكيد كلمة المرور">
+                            <label for="password-confirmation">تأكيد كلمة المرور</label>
+                        </div>
+                        <button
+                            class="bg-deep-navy fw-bold text-white px-5 py-2 border-0 rounded w-fit-content mx-auto">دخول</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p class="text-center mt-2 mb-0 fw-normal text-grey">
+                &copy;كل الحقوق محفوظة لصالح المنصة
+            </p>
+        </div>
+    </footer>
+</body>
+<script src='js/script.js'></script>
+
+</html>
