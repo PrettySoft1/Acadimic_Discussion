@@ -131,17 +131,14 @@
     </nav>
     <main>
         <div class="container py-5">
-            <div class="row" x-data="{
-                first: false,
-                second: false,
-                third: false
-            }">
-                <div class="small col-4" >
-                    <p  x-on:click="change($data.first, $data.second, $data.third, true, false, false)" class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+            <div class="row" x-data="{ first :  false, second: false, third: false }">
+                <div class="small col-4">
+                    <p @click="first = !first; second = false; third = false"
+                        class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
                         التصفية
                         <i class="bi bi-caret-down-fill"></i>
                     </p>
-                    <div x-collapse x-cloak>
+                    <div x-show="first" x-collapse>
                         <p class="fw-bold text-deep-navy">
                             <i class="bi bi-fire"></i>
                             الرائجة
@@ -153,11 +150,12 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <p x-on:click="change($data.first, $data.second, $data.third, false, true, false)" class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+                    <p @click="first = false; second = !second; third = false"
+                        class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
                         التصنيفات
                         <i class="bi bi-caret-down-fill"></i>
                     </p>
-                    <div x-show="second" x-collapse x-cloak>
+                    <div x-show="second" x-collapse>
                         <p class="fw-bold text-deep-navy">
                             <i class="bi bi-fire"></i>
                             الرائجة
@@ -169,11 +167,12 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <p x-on:click="change($data.first, $data.second, $data.third, false, false, true)" class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+                    <p @click="first = false; second = false; third = !third"
+                        class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
                         الأقسام
                         <i class="bi bi-caret-down-fill"></i>
                     </p>
-                    <div x-show="third" x-collapse x-cloak>
+                    <div x-show="third" x-collapse>
                         <p class="fw-bold text-deep-navy">
                             <i class="bi bi-fire"></i>
                             الرائجة
