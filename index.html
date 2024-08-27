@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/framework.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/bootstrap.bundle.min.js" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+
 </head>
 
 <body>
@@ -128,13 +130,17 @@
     </nav>
     <main>
         <div class="container py-5">
-            <div class="row">
-                <div class="small col-4">
-                    <p class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
+            <div class="row" x-data="{
+                first: false,
+                second: false,
+                third: false
+            }">
+                <div class="small col-4" >
+                    <p  x-on:click="first = !first; second = false; third = false" class="fw-bold d-flex align-items-center justify-content-between text-deep-navy cursor-pointer">
                         التصفية
                         <i class="bi bi-caret-down-fill"></i>
                     </p>
-                    <div class="d-none">
+                    <div x-show='first'>
                         <p class="fw-bold text-deep-navy">
                             <i class="bi bi-fire"></i>
                             الرائجة
